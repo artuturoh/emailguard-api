@@ -1,0 +1,31 @@
+{
+  "name": "emailguard-api",
+  "version": "1.0.0",
+  "description": "High-performance email hygiene, disposable detection, and MX verification microservice for RapidAPI",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "email-verification",
+    "email-validation",
+    "disposable-email",
+    "mx-lookup",
+    "rapidapi",
+    "email-hygiene",
+    "typo-detection",
+    "fraud-prevention"
+  ],
+  "author": "EmailGuard Team",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "zod": "^3.24.1"
+  }
+}
