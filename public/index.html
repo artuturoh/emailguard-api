@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EmailGuard API - Enterprise Email Hygiene & Verification</title>
+  <meta name="description" content="High-performance email hygiene, disposable email detection, MX DNS verification, and actionable fraud prevention for developers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0a0f1d',
+              card: '#10172a',
+              border: '#1e293b',
+              accent: '#3b82f6',
+              accentHover: '#2563eb'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0a0f1d;
+      font-family: 'Inter', sans-serif;
+    }
+    .grid-pattern {
+      background-image: radial-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-200 selection:bg-blue-600 selection:text-white grid-pattern relative overflow-x-hidden">
+
+  <!-- Ambient Glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-blue-600/15 via-indigo-600/5 to-transparent blur-3xl pointer-events-none -z-10"></div>
+
+  <!-- Header / Navigation -->
+  <header class="border-b border-slate-800/80 backdrop-blur-md bg-[#0a0f1d]/75 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="h-9 w-9 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+          <svg class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </div>
+        <span class="font-bold text-lg tracking-tight text-white">EmailGuard <span class="text-blue-400">API</span></span>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <!-- Animated Health Badge -->
+        <a href="/health" target="_blank" class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-emerald-950/70 text-emerald-400 border border-emerald-800/60 hover:bg-emerald-900/50 transition">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          All Systems Operational
+        </a>
+
+        <a href="https://rapidapi.com/artuturoh/api/emailguard-disposable-email-detector-and-hygiene" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition shadow-sm shadow-blue-500/20">
+          RapidAPI Hub
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-24">
+    <div class="text-center max-w-3xl mx-auto space-y-6">
+
+      <!-- Badge status -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-blue-950/60 text-blue-300 border border-blue-800/50">
+        <span class="text-blue-400">v1.0 Production</span>
+        <span class="text-slate-600">•</span>
+        <span>High-Speed Microservice</span>
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+        EmailGuard <span class="bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">API</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-lg sm:text-xl text-slate-400 font-normal leading-relaxed">
+        Enterprise Email Hygiene, Disposable Domain Detection &amp; Verification Microservice.
+      </p>
+
+      <p class="text-sm text-slate-500 max-w-2xl mx-auto">
+        Designed for RapidAPI developers. Beyond a simple <code class="text-slate-400 bg-slate-800/80 px-1.5 py-0.5 rounded text-xs font-mono">{ is_disposable: true }</code>: receive RFC 5322 validation, real-time MX lookups, typo correction, and an actionable <code class="text-blue-300 bg-blue-950/70 px-1.5 py-0.5 rounded text-xs font-mono">recommendation</code> ("allow" | "review" | "block").
+      </p>
+
+      <!-- CTA Button -->
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://rapidapi.com/artuturoh/api/emailguard-disposable-email-detector-and-hygiene" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all transform hover:-translate-y-0.5">
+          <span>Subscribe on RapidAPI</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+
+        <a href="#quickstart" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm bg-slate-900/90 hover:bg-slate-800 text-slate-300 border border-slate-800 hover:border-slate-700 transition">
+          View Code Examples
+        </a>
+      </div>
+    </div>
+
+    <!-- Metrics Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-16 max-w-4xl mx-auto">
+      <!-- Metric 1 -->
+      <div class="bg-[#10172a]/80 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-blue-500/40 transition group">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs font-semibold tracking-wider uppercase text-blue-400">Ultra-Fast</span>
+          <div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover:scale-110 transition">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+        </div>
+        <div class="text-3xl font-extrabold text-white tracking-tight">&lt; 15ms Latency</div>
+        <p class="text-sm text-slate-400 mt-2">In-memory O(1) JavaScript Set lookups and local TTL DNS cache for near-instant responses.</p>
+      </div>
+
+      <!-- Metric 2 -->
+      <div class="bg-[#10172a]/80 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-indigo-500/40 transition group">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs font-semibold tracking-wider uppercase text-indigo-400">Database</span>
+          <div class="p-2 rounded-lg bg-indigo-500/10 text-indigo-400 group-hover:scale-110 transition">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          </div>
+        </div>
+        <div class="text-3xl font-extrabold text-white tracking-tight">30,000+ Domains</div>
+        <p class="text-sm text-slate-400 mt-2">Comprehensive burner and temporary email registry updated continuously to stop fraud.</p>
+      </div>
+
+      <!-- Metric 3 -->
+      <div class="bg-[#10172a]/80 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/40 transition group">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs font-semibold tracking-wider uppercase text-emerald-400">Reliability</span>
+          <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 group-hover:scale-110 transition">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+        </div>
+        <div class="text-3xl font-extrabold text-white tracking-tight">99.9% Uptime</div>
+        <p class="text-sm text-slate-400 mt-2">Strict 800ms timeouts with RFC 5321 fallback to prevent request hanging or degradation.</p>
+      </div>
+    </div>
+
+    <!-- Quickstart Code Section -->
+    <section id="quickstart" class="mt-20 max-w-4xl mx-auto">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+        <div>
+          <h2 class="text-xl font-bold text-white tracking-tight">Quick Integration</h2>
+          <p class="text-sm text-slate-400">Send an email to <code class="text-blue-300 font-mono text-xs">POST /v1/verify</code> and receive immediate intelligence.</p>
+        </div>
+
+        <!-- Language Tabs -->
+        <div class="inline-flex p-1 bg-slate-900 border border-slate-800 rounded-lg text-xs font-medium self-start sm:self-auto">
+          <button id="tab-curl" onclick="switchTab('curl')" class="px-3.5 py-1.5 rounded-md bg-blue-600 text-white font-semibold transition">
+            cURL
+          </button>
+          <button id="tab-node" onclick="switchTab('node')" class="px-3.5 py-1.5 rounded-md text-slate-400 hover:text-white transition">
+            Node.js
+          </button>
+        </div>
+      </div>
+
+      <!-- Code Box -->
+      <div class="bg-[#0b1120] border border-slate-800 rounded-2xl overflow-hidden shadow-2xl relative">
+        <!-- Window Bar -->
+        <div class="flex items-center justify-between px-4 py-3 bg-slate-900/90 border-b border-slate-800">
+          <div class="flex items-center space-x-2">
+            <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+            <span class="text-xs text-slate-500 font-mono ml-2" id="code-filename">request.sh</span>
+          </div>
+          <button id="copy-btn" onclick="copyCode()" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono text-slate-400 hover:text-white hover:bg-slate-800 transition">
+            <svg id="copy-icon" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            <span id="copy-text">Copy</span>
+          </button>
+        </div>
+
+        <!-- Code Snippet Area -->
+        <div class="p-5 font-mono text-xs sm:text-sm overflow-x-auto leading-relaxed">
+          <!-- cURL Code -->
+          <pre id="code-curl" class="text-slate-300"><span class="text-sky-400">curl</span> --request POST \
+  --url <span class="text-emerald-300">'https://emailguard-disposable-email-detector-and-hygiene.p.rapidapi.com/v1/verify'</span> \
+  --header <span class="text-amber-300">'Content-Type: application/json'</span> \
+  --header <span class="text-amber-300">'X-RapidAPI-Key: YOUR_RAPIDAPI_KEY'</span> \
+  --header <span class="text-amber-300">'X-RapidAPI-Host: emailguard-disposable-email-detector-and-hygiene.p.rapidapi.com'</span> \
+  --data <span class="text-purple-300">'{ "email": "juan.perez@gmial.com" }'</span></pre>
+
+          <!-- Node.js Code (hidden by default) -->
+          <pre id="code-node" class="text-slate-300 hidden"><span class="text-purple-400">const</span> response = <span class="text-purple-400">await</span> <span class="text-sky-400">fetch</span>(<span class="text-emerald-300">'https://emailguard-disposable-email-detector-and-hygiene.p.rapidapi.com/v1/verify'</span>, {
+  method: <span class="text-emerald-300">'POST'</span>,
+  headers: {
+    <span class="text-amber-300">'Content-Type'</span>: <span class="text-emerald-300">'application/json'</span>,
+    <span class="text-amber-300">'X-RapidAPI-Key'</span>: process.env.RAPIDAPI_KEY,
+    <span class="text-amber-300">'X-RapidAPI-Host'</span>: <span class="text-emerald-300">'emailguard-disposable-email-detector-and-hygiene.p.rapidapi.com'</span>
+  },
+  body: JSON.<span class="text-sky-400">stringify</span>({ email: <span class="text-emerald-300">'juan.perez@gmial.com'</span> })
+});
+
+<span class="text-purple-400">const</span> { data } = <span class="text-purple-400">await</span> response.<span class="text-sky-400">json</span>();
+
+<span class="text-slate-500">// 1-line business logic decision</span>
+<span class="text-purple-400">if</span> (data.recommendation === <span class="text-emerald-300">'block'</span>) {
+  <span class="text-purple-400">throw new</span> <span class="text-sky-400">Error</span>(<span class="text-emerald-300">'Disposable or invalid email rejected'</span>);
+}</pre>
+        </div>
+      </div>
+
+      <!-- Live Contract Output Preview -->
+      <div class="mt-6 bg-[#0b1120] border border-slate-800/80 rounded-2xl overflow-hidden shadow-xl">
+        <div class="px-4 py-2.5 bg-slate-900/60 border-b border-slate-800/80 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-400">Response 200 OK — Pro Contract</span>
+          <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">28ms execution</span>
+        </div>
+        <div class="p-5 font-mono text-xs sm:text-xs overflow-x-auto text-slate-300 leading-relaxed max-h-72">
+<pre>{
+  <span class="text-sky-400">"status"</span>: <span class="text-emerald-300">"success"</span>,
+  <span class="text-sky-400">"data"</span>: {
+    <span class="text-sky-400">"email"</span>: <span class="text-emerald-300">"juan.perez@gmial.com"</span>,
+    <span class="text-sky-400">"normalized_email"</span>: <span class="text-emerald-300">"juan.perez@gmail.com"</span>,
+    <span class="text-sky-400">"score"</span>: <span class="text-amber-400">45</span>,
+    <span class="text-sky-400">"verdict"</span>: <span class="text-amber-400">"risky"</span>,
+    <span class="text-sky-400">"recommendation"</span>: <span class="text-amber-400">"review"</span>,
+    <span class="text-sky-400">"checks"</span>: {
+      <span class="text-sky-400">"syntax"</span>: { <span class="text-sky-400">"valid"</span>: <span class="text-purple-400">true</span>, <span class="text-sky-400">"rfc_compliant"</span>: <span class="text-purple-400">true</span> },
+      <span class="text-sky-400">"dns"</span>: { <span class="text-sky-400">"has_mx_records"</span>: <span class="text-purple-400">false</span>, <span class="text-sky-400">"mx_host"</span>: <span class="text-slate-500">null</span> },
+      <span class="text-sky-400">"disposable"</span>: { <span class="text-sky-400">"is_disposable"</span>: <span class="text-purple-400">false</span> },
+      <span class="text-sky-400">"typo_guard"</span>: {
+        <span class="text-sky-400">"has_typo"</span>: <span class="text-purple-400">true</span>,
+        <span class="text-sky-400">"suggested_domain"</span>: <span class="text-emerald-300">"gmail.com"</span>,
+        <span class="text-sky-400">"suggested_email"</span>: <span class="text-emerald-300">"juan.perez@gmail.com"</span>
+      }
+    }
+  }
+}</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950/60 py-8 text-center text-xs text-slate-500">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        © 2026 EmailGuard API. All rights reserved. Built for RapidAPI developers.
+      </div>
+      <div class="flex items-center space-x-6">
+        <a href="/health" class="hover:text-slate-400 transition">/health</a>
+        <a href="https://rapidapi.com/artuturoh/api/emailguard-disposable-email-detector-and-hygiene" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition">RapidAPI Marketplace</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Tabs & Copy Script -->
+  <script>
+    let currentTab = 'curl';
+
+    const RAW_CODES = {
+      curl: `curl --request POST \\
+  --url 'https://emailguard-disposable-email-detector-and-hygiene.p.rapidapi.com/v1/verify' \\
+  --header 'Content-Type: application/json' \\
+  --header 'X-RapidAPI-Key: YOUR_RAPIDAPI_KEY' \\
+  --header 'X-RapidAPI-Host: emailguard-disposable-email-detector-and-hygiene.p.rapidapi.com' \\
+  --data '{ "email": "juan.perez@gmial.com" }'`,
+      node: `const response = await fetch('https://emailguard-disposable-email-detector-and-hygiene.p.rapidapi.com/v1/verify', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'X-RapidAPI-Key': process.env.RAPIDAPI_KEY,
+    'X-RapidAPI-Host': 'emailguard-disposable-email-detector-and-hygiene.p.rapidapi.com'
+  },
+  body: JSON.stringify({ email: 'juan.perez@gmial.com' })
+});
+
+const { data } = await response.json();
+
+if (data.recommendation === 'block') {
+  throw new Error('Disposable or invalid email rejected');
+}`
+    };
+
+    function switchTab(tab) {
+      currentTab = tab;
+      const btnCurl = document.getElementById('tab-curl');
+      const btnNode = document.getElementById('tab-node');
+      const codeCurl = document.getElementById('code-curl');
+      const codeNode = document.getElementById('code-node');
+      const filename = document.getElementById('code-filename');
+
+      if (tab === 'curl') {
+        btnCurl.className = 'px-3.5 py-1.5 rounded-md bg-blue-600 text-white font-semibold transition';
+        btnNode.className = 'px-3.5 py-1.5 rounded-md text-slate-400 hover:text-white transition';
+        codeCurl.classList.remove('hidden');
+        codeNode.classList.add('hidden');
+        filename.textContent = 'request.sh';
+      } else {
+        btnNode.className = 'px-3.5 py-1.5 rounded-md bg-blue-600 text-white font-semibold transition';
+        btnCurl.className = 'px-3.5 py-1.5 rounded-md text-slate-400 hover:text-white transition';
+        codeNode.classList.remove('hidden');
+        codeCurl.classList.add('hidden');
+        filename.textContent = 'verify.js';
+      }
+    }
+
+    function copyCode() {
+      const textToCopy = RAW_CODES[currentTab];
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const copyText = document.getElementById('copy-text');
+        copyText.textContent = 'Copied!';
+        setTimeout(() => {
+          copyText.textContent = 'Copy';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -18,6 +18,42 @@ after(async () => {
 });
 
 describe('HTTP API Endpoints', () => {
+  test('GET / serves HTML landing page when Accept: text/html is requested', async () => {
+    const res = await fetch(`${baseUrl}/`, {
+      headers: { Accept: 'text/html' },
+    });
+    assert.equal(res.status, 200);
+    const contentType = res.headers.get('content-type');
+    assert.ok(contentType.includes('text/html'));
+
+    const html = await res.text();
+    assert.ok(html.includes('EmailGuard API'));
+    assert.ok(html.includes('All Systems Operational'));
+    assert.ok(html.includes('15ms Latency'));
+    assert.ok(html.includes('30,000+ Domains'));
+    assert.ok(html.includes('99.9% Uptime'));
+    assert.ok(html.includes('Subscribe on RapidAPI'));
+    assert.ok(html.includes('https://rapidapi.com/artuturoh/api/emailguard-disposable-email-detector-and-hygiene'));
+  });
+
+  test('GET / serves JSON metadata when Accept: application/json is requested', async () => {
+    const res = await fetch(`${baseUrl}/`, {
+      headers: { Accept: 'application/json' },
+    });
+    assert.equal(res.status, 200);
+    const contentType = res.headers.get('content-type');
+    assert.ok(contentType.includes('application/json'));
+
+    const json = await res.json();
+    assert.equal(json.name, 'EmailGuard API');
+    assert.equal(
+      json.documentation,
+      'https://rapidapi.com/artuturoh/api/emailguard-disposable-email-detector-and-hygiene'
+    );
+    assert.equal(json.health, '/health');
+    assert.equal(json.version, '1.0.0');
+  });
+
   test('GET /health returns healthy status and metrics', async () => {
     const res = await fetch(`${baseUrl}/health`);
     assert.equal(res.status, 200);
